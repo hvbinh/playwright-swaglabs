@@ -1,9 +1,11 @@
 import {test, expect} from '@playwright/test'
 import { Login } from '../pages/Login'
 import { logger } from '../common/WinstonLog';
+import { PageGenerator } from '../common/PageGenerator';
+
 
 test('Verify that login successfully',async ({page})=>{
-    const login = new Login(page);
+    const login = PageGenerator.getLoginPage(page);
 
     logger.info('Go to https://www.saucedemo.com/');
     await login.gotoURL('https://www.saucedemo.com/');
@@ -21,7 +23,7 @@ test('Verify that login successfully',async ({page})=>{
     await expect(page).toHaveTitle('Swag Labs');
 })
 test('Verify that error message shows when login with empty user password',async ({page})=>{
-    const login = new Login(page);
+    const login = PageGenerator.getLoginPage(page);
 
     logger.info('Go to https://www.saucedemo.com/');
     await login.gotoURL('https://www.saucedemo.com/');
@@ -39,7 +41,7 @@ test('Verify that error message shows when login with empty user password',async
     await expect(await login.usernameErrorMessage()).toBe('Epic sadface: Username is required');
 })
 test('Verify that error message shows when login with empty password',async ({page})=>{
-    const login = new Login(page);
+    const login = PageGenerator.getLoginPage(page);
 
     logger.info('Go to https://www.saucedemo.com/');
     await login.gotoURL('https://www.saucedemo.com/');
@@ -57,7 +59,7 @@ test('Verify that error message shows when login with empty password',async ({pa
     await expect(await login.usernameErrorMessage()).toBe('Epic sadface: Password is required');
 })
 test('Verify that error message shows when user, password do not exist in the system',async ({page})=>{
-    const login = new Login(page);
+    const login = PageGenerator.getLoginPage(page);
 
     logger.info('Go to https://www.saucedemo.com/');
     await login.gotoURL('https://www.saucedemo.com/');
