@@ -30,7 +30,7 @@ test('Verify that product detail page displays correctly',async ({page})=>{
     console.log("test");
     await expect(text).toBe('Sauce Labs Backpack');
 
-    logger.info("done");
+    logger.info("done abc");
 
     
 })
