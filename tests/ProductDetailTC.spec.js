@@ -29,5 +29,7 @@ test('Verify that product detail page displays correctly',async ({page})=>{
     const text = await productDetail.getProductTitle();
     await expect(text).toBe('Sauce Labs Backpack');
 
+    logger.info("done");
+
     
 })
