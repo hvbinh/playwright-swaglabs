@@ -27,10 +27,8 @@ test('Verify that product detail page displays correctly',async ({page})=>{
 
     const productDetail = PageGenerator.getProductDetailPage(page);
     logger.info('Verify product detail displays correctly');
-    const text = await productDetail.getProductTitle();
 
-    await expect(text).toBe('Sauce Labs Backpack');
+    await expect(await productDetail.getProductTitle()).toBe('Sauce Labs Backpack');
 
 
-    
 })
