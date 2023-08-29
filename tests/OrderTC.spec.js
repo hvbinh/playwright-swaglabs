@@ -3,8 +3,7 @@ import { logger } from '../common/WinstonLog';
 import { PageGenerator } from '../common/PageGenerator';
 import { GlobalConstant } from '../common/GlobalConstant';
 
-
-test('Verify that product detail page displays correctly',async ({page})=>{
+test('Verify that order process works correctly',async({page})=>{
     const login = PageGenerator.getLoginPage(page);
     
     logger.info('Go to https://www.saucedemo.com/');
@@ -24,8 +23,10 @@ test('Verify that product detail page displays correctly',async ({page})=>{
     await home.clickToFirstProduct();
 
     const productDetail = PageGenerator.getProductDetailPage(page);
-    logger.info('Verify product detail displays correctly');
-    await expect(await productDetail.getProductTitle()).toBe('Sauce Labs Backpack');
+    logger.info('Click add to cart button');
+    await productDetail.clickAddToCartButton();
 
+    logger.info('Verify number in cart badge = 1');
+    await expect(await productDetail.getShoppingCartBadgeNumber()).toBe("1");
 
 })

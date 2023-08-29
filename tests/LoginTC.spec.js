@@ -1,5 +1,4 @@
-import {test, expect} from '@playwright/test'
-import { Login } from '../pages/Login'
+import {test, expect, chromium} from '@playwright/test'
 import { logger } from '../common/WinstonLog';
 import { PageGenerator } from '../common/PageGenerator';
 import { GlobalConstant } from '../common/GlobalConstant';
