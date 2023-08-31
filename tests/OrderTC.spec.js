@@ -60,6 +60,8 @@ const cart = PageGenerator.getCartPage(page);
     logger.info('Verify title displays correctly');
     await expect(page).toHaveTitle('Swag Labs');
 
+    console.log('test');
+
 
 
 })
