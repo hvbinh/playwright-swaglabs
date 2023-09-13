@@ -20,6 +20,8 @@ test('Verify that handel one window', async () => {
     
     console.log("selenium: "+ await page.title());
     
+    await page.bringToFront();
+    await page.waitForTimeout(6000);
     await page.locator("//a[text()='TIKI']").isVisible();
     await page.locator("//a[text()='TIKI']").click();
 
