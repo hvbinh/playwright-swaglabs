@@ -14,6 +14,7 @@ test('Verify that handel one window', async () => {
         context.waitForEvent("page")
        // await page.waitForTimeout(10000),
     ]);
+    await newWindow.waitForLoadState();
     await newWindow.locator("//textarea[@name='q']").fill("selenium");
     await newWindow.locator("//textarea[@name='q']").press('Enter');
     console.log(await newWindow.title());
@@ -21,11 +22,11 @@ test('Verify that handel one window', async () => {
     console.log("selenium: "+ await page.title());
     
     await page.bringToFront();
-    await page.waitForTimeout(6000);
+    await page.waitForTimeout(3000);
     await page.locator("//a[text()='TIKI']").isVisible();
     await page.locator("//a[text()='TIKI']").click();
-
-    await page.waitForTimeout(6000);
+    await page.bringToFront();
+    await page.waitForTimeout(3000);
 
     
     
