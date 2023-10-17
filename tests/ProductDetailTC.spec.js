@@ -20,11 +20,27 @@ test('Verify that product detail page displays correctly',async ({page})=>{
     await login.clickToLoginButton();
 
     const home = PageGenerator.getHomePage(page);
+    logger.info("Save info of first product");
+    const title = await home.getTitleText();
+    const description = await home.getDescription();
+    const price = await home.getPrice();
+
     logger.info('Click to first product');
     await home.clickToFirstProduct();
 
     const productDetail = PageGenerator.getProductDetailPage(page);
     logger.info('Verify product detail displays correctly');
     await expect(await productDetail.getProductTitle()).toBe('Sauce Labs Backpack');
+
+    logger.info('Verify product title');
+    await expect(await productDetail.getProductTitle()).toBe(title);
+
+    logger.info('Verify product description');
+    await expect(await productDetail.getProductDescription()).toBe(description);
+
+    logger.info('Verify product price');
+    await expect(await productDetail.getProductPrice()).toBe(price);
+
+    
     
 })
