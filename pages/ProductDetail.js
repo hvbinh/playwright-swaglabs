@@ -20,4 +20,12 @@ export class ProductDetail{
     {
         return this.shopping_cart_badge.innerText();
     }
+    getProductDescription()
+    {
+        return this.product_description.innerText();
+    }
+    getProductPrice()
+    {
+        return this.product_price.innerText();
+    }
 }
