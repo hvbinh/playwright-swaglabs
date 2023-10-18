@@ -28,6 +28,9 @@ test('Verify that product detail page displays correctly',async ({page})=>{
     logger.info('Click to first product');
     await home.clickToFirstProduct();
 
+    logger.info("Click to Add to cart button");
+    home.clickToAddToCartButton();
+
     const productDetail = PageGenerator.getProductDetailPage(page);
     logger.info('Verify product detail displays correctly');
     await expect(await productDetail.getProductTitle()).toBe('Sauce Labs Backpack');
@@ -40,6 +43,22 @@ test('Verify that product detail page displays correctly',async ({page})=>{
 
     logger.info('Verify product price');
     await expect(await productDetail.getProductPrice()).toBe(price);
+
+    logger.info('Click to shopping cart');
+    const cart = PageGenerator.getCartPage(page);
+    cart.clickToShoppingCartButton();
+
+    logger.info('Verify product title');
+    await expect(await cart.getProductTitle()).toBe(title);
+
+    logger.info('Verify product description');
+    await expect(await cart.getProductDescription()).toBe(description);
+
+    logger.info('Verify product price');
+    await expect(await cart.getProductPrice()).toBe(price);
+
+    logger.info('Verify product quantity');
+    await expect(await cart.getProductQuantity()).toBe("1");
  
     
 })
