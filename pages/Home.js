@@ -13,6 +13,8 @@ export class Home{
         this.product_description = page.locator("(//div[@class='inventory_item_desc'])[1]");
         this.product_price = page.locator("(//div[contains(@class,'inventory_item_price')])[1]");
         this.shopping_cart_badge = page.locator("//span[@class='shopping_cart_badge']");
+        this.twitter_icon = page.locator("//a[text()='Twitter']");
+
     }
     async clickToFirstProduct()
     {
@@ -38,4 +40,9 @@ export class Home{
     {
         return this.shopping_cart_badge.innerText();
     }
+    async clickToTweeterIcon()
+    {
+        await this.twitter_icon.click();
+    }
+    
 }
