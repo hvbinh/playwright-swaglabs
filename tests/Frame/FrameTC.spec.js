@@ -1,16 +1,18 @@
-import { test, expect,chromium } from '@playwright/test';
+import { test, expect, chromium } from '@playwright/test';
 import { logger } from '../../common/WinstonLog';
 
 let browser, context, page;
 
-// test.beforeAll(async()=>{
-//     browser = await chromium.launch();
-//     context = await browser.newContext();
-//     page = await context.newPage();
-// })
+test.beforeAll(async () => {
+    browser = await chromium.launch();
+    context = await browser.newContext();
+    page = await context.newPage();
 
-test('Verify that frame works correctly', async ({page})=>{
-    
+})
+
+test('Verify that frame works correctly', async () => {
+
+
     logger.info('Go to url')
     await page.goto("https://skills.kynaenglish.vn/");
     await page.waitForTimeout(3000);
@@ -28,7 +30,6 @@ test('Verify that frame works correctly', async ({page})=>{
     await page.mainFrame();
     await expect(await page.locator("(//div[@class='title']/parent::div[@class='parent-category'])[1]").innerText()).toBe("Tất cả khóa học");
     await page.waitForTimeout(3000);
-
 
 
 })
